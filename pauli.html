@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauli Product Word Simplification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: lavenderblush;
+            color: rebeccapurple;
+        }
+
+        #inputField,
+        #outputField {
+            display: block;
+            margin-top: 20px;
+            width: 200px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h2>Pauli Product Word Simplification</h2>
+
+    <label for="inputField">Enter Pauli Product:</label>
+    <input type="text" id="inputField" onkeyup="showOutput(this.value)">
+
+    <label for="outputField">Simplified Product:</label>
+    <input type="text" id="outputField" readonly>
+
+    <p>
+        Try these:
+    </p>
+    <ul>
+        <li><a href="javascript:setInputValue('PY')">PY</a></li>
+        <li><a href="javascript:setInputValue('PYX')">PYX</a></li>
+        <li><a href="javascript:setInputValue('PXYZ')">PXYZ</a></li>
+        <li><a href="javascript:setInputValue('MXXXYY')">MXXXYY</a></li>
+        <li><a href="javascript:setInputValue('MZZXYZ')">MZZXYZ</a></li>
+        <li><a href="javascript:setInputValue('PXYZXYZ')">PXYZXYZ</a></li>
+        <li><a href="javascript:setInputValue('PXXXXZZZYY')">PXXXXZZZYY</a></li>
+        <li><a href="javascript:setInputValue('MXYYZZYYZZZY')">MXYYZZYYZZZY</a></li>
+        <li><a href="javascript:setInputValue('P')">P</a></li>
+        <li><a href="javascript:setInputValue('M')">M</a></li>
+        <li><a href="javascript:setInputValue('XYZ')">XYZ</a></li>
+    </ul>
+
+    <script>
+        function pauli_product(expr) {
+            if (expr.length < 2) {
+                return false;
+            }
+
+            // Sign Bit
+            let sign_bit = null;
+            switch (expr[0]) {
+                case 'P':
+                    sign_bit = 0;
+                    break;
+                case 'M':
+                    sign_bit = 1;
+                    break;
+                default:
+                    return false;
+            }
+
+            const n = expr.length;
+
+            // Bubble Sort
+            expr = expr.split("");  // Convert string to array for character swaps
+            for (let i = 1; i < n; i++) {
+                if (!['X', 'Y', 'Z'].includes(expr[i]))
+                    return false;
+                for (let j = 1; j < n - i; j++) {
+                    if (expr[j] > expr[j + 1]) {
+                        sign_bit = 1 - sign_bit;
+                        let tmp = expr[j];
+                        expr[j] = expr[j + 1];
+                        expr[j + 1] = tmp;
+                    }
+                }
+            }
+            expr = expr.join("");  // Convert back to string
+
+            // Involution
+            let counts = [0, 0, 0];
+            for (let i = 1; i < n; i++) {
+                const index = expr.charCodeAt(i) - 'X'.charCodeAt(0);
+                counts[index] = 1 - counts[index];
+            }
+
+            let output = (sign_bit ? 'M' : 'P');
+            for (let i = 0; i < 3; i++) {
+                if (counts[i] == 1) {
+                    output += String.fromCharCode('X'.charCodeAt(0) + i);
+                }
+            }
+            if (output.length == 1)
+                output += 'I';
+
+            return output;
+        }
+
+        function setInputValue(value) {
+            document.getElementById('inputField').value = value;
+            showOutput(value);
+        }
+
+        function showOutput(value) {
+            const output = pauli_product(value);
+            document.getElementById('outputField').value = output;
+        }
+    </script>
+
+</body>
+
+</html>
