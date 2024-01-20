@@ -5,59 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: "Arial", sans-serif;
-            padding: 40px;
-            background-color: #ECE5F9;
-            /* Light purple background */
-            color: #502B85;
-            /* Deep purple text */
-            text-align: left;
-            /* Align content to the left */
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            background-color: #F4F2FF;
+            color: #333;
+            text-align: center;
+            margin: 0;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
+        h1 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #502B85;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
         }
 
         p {
             font-size: 18px;
+            color: #555;
         }
 
         a {
-            display: block;
-            /* Block-level to make it occupy its own line */
+            display: inline-block;
             color: #FFF;
-            /* White text */
-            background-color: #502B85;
-            /* Deep purple background */
+            background-color: #6A67CE;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
-            margin-top: 20px;
+            margin: 10px;
+            transition: background-color 0.3s;
         }
 
         a:hover {
-            background-color: #7045AF;
-            /* Slightly lighter purple on hover */
+            background-color: #7B78D7;
         }
 
-        h1 {
-            font-size: 32px;
+        .app-section {
+            background-color: #ECE5F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .app-section h2 {
+            font-family: 'Ubuntu', sans-serif;
+            color: #502B85;
+        }
+
+        .app-section p {
+            color: #333;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #888;
+            margin-top: 40px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to My Homepage!</h1>
-    <p>Discover various informative contents and insights here. Explore the sections below:</p>
+    <div class="container">
+        <h1>Welcome to My Homepage!</h1>
+        <p>Discover various informative contents and insights here. Explore the sections below:</p>
 
-    <a href="kuala_lumpur_sunrise_sunset.html">🌄 Kuala Lumpur's Sunrise and Sunset Times 🌅</a>
-    <a href="https://veehz.github.io/" target="_blank">🔗 Hua Zhi's Page</a>
-    <!-- Add more links as you expand your website -->
+        <div class="app-section">
+            <h2>数学秘籍 (Maths Cache)</h2>
+            <p>Maths notes and tools for efficient reference and revision, ideal for students.</p>
+            <a href="https://play.google.com/store/apps/details?id=io.github.vyvee.aerith" target="_blank">Get it on Google Play</a>
+            <a href="https://vyvee.github.io/mathscacheweb/" target="_blank">Visit the Web App</a>
+        </div>
+
+        <a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times</a>
+        <!-- Additional links can be added here -->
+    </div>
+    <div class="footer">
+        © 2024 Your Name. All rights reserved.
+    </div>
 </body>
 
 </html>
