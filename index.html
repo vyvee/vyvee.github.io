@@ -32,48 +32,26 @@
             color: #555;
         }
 
-        .app-section {
-            background-color: #ECE5F9;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .app-section h2 {
-            font-family: 'Ubuntu', sans-serif;
-            color: #502B85;
-        }
-
-        .app-info > div {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .play-badge-link, .app-link {
-            display: block;
-            background-color: transparent;
-            padding: 0;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .google-play-badge {
-            max-width: 50vw;
-            height: auto;
-        }
-
         .app-link {
             color: #FFF;
             background-color: #6A67CE;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
             transition: background-color 0.3s;
         }
 
         .app-link:hover {
             background-color: #7B78D7;
+        }
+
+        .app-section {
+            background-color: #ECE5F9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
         }
 
         .footer {
@@ -89,23 +67,16 @@
         <h1>Welcome to My Homepage!</h1>
         <p>Discover various informative contents and insights here. Explore the sections below:</p>
 
+        <!-- Link to the Maths Cache page -->
         <div class="app-section">
-            <h2>数学秘籍 (Maths Cache)</h2>
-            <p>Maths notes and tools for efficient reference and revision, ideal for students.</p>
-            <div class="app-info">
-                <div>Android Users:</div>
-                <a href="https://play.google.com/store/apps/details?id=io.github.vyvee.aerith" target="_blank" class="play-badge-link">
-                    <img src="google-play-badge.png" alt="Get it on Google Play" class="google-play-badge">
-                </a>
-            </div>
-            <div class="app-info">
-                <div>Other Users (including iPhone and iPad):</div>
-                <a href="https://vyvee.github.io/mathscacheweb/" target="_blank" class="app-link">Visit the Web App</a>
-                <p>The native iOS app is currently not available. We recommend using our web app in the meantime.</p>
-            </div>
+            <h2>Featured App: 数学秘籍 Maths Cache</h2>
+            <p>Efficient maths notes and tools for reference and revision, ideal for students. Available as a web app and on Google Play Store.</p>
+            <a href="maths-cache.html" class="app-link">Learn More About Maths Cache</a>
         </div>
 
+        <!-- Other content links -->
         <a href="kuala_lumpur_sunrise_sunset.html" class="app-link">Kuala Lumpur's Sunrise and Sunset Times</a>
+        <!-- Additional links can be added here -->
     </div>
     <div class="footer">
         © 2024 Vee Voon Yee. All rights reserved.
