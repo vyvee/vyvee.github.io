@@ -51,8 +51,8 @@
         }
 
         .google-play-badge {
-            max-width: 50vw;
             height: auto;
+            /* Retain original height */
             margin: 20px 0;
         }
 
@@ -64,6 +64,25 @@
 
         .language-section {
             margin-top: 10px;
+        }
+
+        ul {
+            text-align: left;
+            /* Make list left-justified */
+            display: inline-block;
+            /* Adjust to ensure text-align takes effect */
+        }
+
+        .logo-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            /* Adjust the gap between elements */
+        }
+
+        .logo {
+            height: 50px;
         }
     </style>
 </head>
@@ -77,20 +96,34 @@
             revision.</h2>
 
         <div class="app-info language-section">安卓用户 Android Users:</div>
-        <a href="https://play.google.com/store/apps/details?id=io.github.vyvee.aerith" target="_blank">
-            <img src="google-play-badge.png" alt="Get it on Google Play" class="google-play-badge">
-        </a>
+        <div class="logo-align">
+            <!-- Logo next to Google Play badge -->
+            <img src="/mathscache/logo-512.png" alt="Maths Cache Logo" class="logo">
+            <div>
+                <a href="https://play.google.com/store/apps/details?id=io.github.vyvee.aerith" target="_blank">
+                    <img src="google-play-badge.png" alt="Get it on Google Play" class="google-play-badge">
+                </a>
+            </div>
+        </div>
 
         <div class="app-info language-section">其他用户 Other Users (including iPhone and iPad):</div>
-        <a href="https://vyvee.github.io/mathscacheweb/" target="_blank" class="app-link">数学秘籍（网页应用)<br>Maths Cache (Web
-            App）</a>
-        <p>(原生iOS应用目前还在开发中。我们建议您暂时使用及安装我们的网页应用。<br>The native iOS app is currently under development. We recommend using
-            and installing our web app in the meantime.)</p>
+        <div class="logo-align">
+            <!-- Logo next to Web App button -->
+            <img src="/mathscache/logo-512.png" alt="Maths Cache Logo" class="logo">
+            <div>
+                <a href="https://vyvee.github.io/mathscacheweb/" target="_blank" class="app-link">数学秘籍（网页应用)<br>Maths
+                    Cache (Web
+                    App）</a>
+            </div>
+        </div>
+        <p>(原生iOS应用目前还在开发中。我们建议您暂时使用及安装我们的网页应用。<br>The native iOS app is currently under development. We
+            recommend using and installing our web app in the meantime.)</p>
 
         <h3>使用网页应用的注意事项 Notes on Using the Web App</h3>
         <ul>
             <li>需要互联网连接 Requires Internet: 稳定的互联网连接是必要的。A stable internet connection is necessary.</li>
-            <li>性能 Performance: 相比原生应用，体验可能稍慢但仍具响应性。Expect a responsive, but slightly slower experience than native apps.</li>
+            <li>性能 Performance: 相比原生应用，体验可能稍慢但仍具响应性。Expect a responsive, but slightly slower experience than native
+                apps.</li>
         </ul>
 
     </div>
