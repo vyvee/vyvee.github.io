@@ -65,6 +65,15 @@
         .link-list p {
             text-align: center;
             margin-bottom: 1.5em; /* Add slightly more space between links */
+            font-size: 1.1em; /* Slightly larger font for links */
+        }
+
+        /* Style for emojis next to links */
+        .link-list p .emoji {
+            display: inline-block;
+            margin-right: 0.6em; /* Space between emoji and link */
+            font-size: 1.2em; /* Make emoji slightly larger */
+            vertical-align: middle; /* Align emoji nicely with text */
         }
 
 
@@ -83,6 +92,7 @@
         @media (max-width: 768px) {
             .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
             h1 { font-size: 1.8rem; }
+            .link-list p { font-size: 1em; } /* Adjust link font size on smaller screens */
         }
 
     </style>
@@ -90,15 +100,16 @@
 
 <body>
     <div class="container">
-        <h1>Welcome to My Homepage!</h1>
-        <p style="text-align: center;">Here's some of my random writing and guides. Hope you find something interesting or useful below:</p>
+        <h1>👋 Welcome to My Homepage!</h1>
+
+        <p style="text-align: center;">✍️ Here's some of my random writing and guides. Hope you find something interesting or useful below:</p>
 
         <div class="link-list">
-            <p><a href="maths-cache.html">数学秘籍 Maths Cache - Efficient maths notes and tools</a></p>
+            <p><span class="emoji">🧮</span><a href="maths-cache.html">数学秘籍 Maths Cache - Efficient maths notes and tools</a></p>
 
-             <p><a href="screen-recording-ffmpeg.html">Guide: Screen Recording with FFmpeg for Proctoring</a></p>
+            <p><span class="emoji">📹</span><a href="screen-recording-ffmpeg.html">Guide: Screen Recording with FFmpeg for Proctoring</a></p>
 
-            <p><a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times</a></p>
+            <p><span class="emoji">🌅</span><a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times</a></p>
 
             </div>
 
