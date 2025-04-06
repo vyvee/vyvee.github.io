@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Recording with FFmpeg for Proctoring</title>
+    <style>
+        /* --- Global Styles --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            /* WARM BACKGROUND */
+            background-color: #fdf5e6; /* OldLace - warm off-white */
+            color: #212529; /* Dark grey text for high contrast */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Content Container --- */
+        .container {
+            max-width: 800px; /* Constrained width for readability */
+            margin: 2rem auto; /* Center container with margin top/bottom */
+            padding: 2rem 3rem; /* Padding inside the container */
+            background-color: #ffffff; /* White background for content */
+            border-radius: 8px; /* Slightly rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Slightly stronger shadow */
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            color: #343a40; /* Slightly darker heading color */
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+            border-bottom: 1px solid #dee2e6; /* Subtle line under headings */
+            padding-bottom: 0.3em;
+        }
+        h1 { font-size: 2.2rem; border-bottom-width: 2px; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.4rem; border-bottom: none; }
+        p { margin-bottom: 1.2em; }
+        strong { font-weight: 600; }
+
+        /* --- Links --- */
+        a { color: #007bff; text-decoration: none; }
+        a:hover { color: #0056b3; text-decoration: underline; }
+
+        /* --- Lists --- */
+        ol, ul { padding-left: 2em; margin-bottom: 1.2em; }
+        li { margin-bottom: 0.5em; }
+        li p { margin-bottom: 0.5em; }
+        /* Adjust list styling inside parameter explanations */
+        ul ul { margin-top: 0.3em; margin-bottom: 0.8em; }
+
+
+        /* --- Code Styling --- */
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.9em;
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            color: #333;
+        }
+
+        /* Wrapper for positioning copy button */
+        .code-block-wrapper {
+            position: relative;
+            margin-bottom: 1.5em; /* Space after code blocks */
+        }
+
+        pre {
+            background-color: #f1f3f5; /* Keep neutral light grey for code blocks */
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 1em;
+            padding-top: 2.5em; /* Make space for button */
+            overflow-x: auto;
+            line-height: 1.45;
+            margin: 0; /* Remove margin from pre since wrapper handles it */
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 0.88em;
+            color: inherit;
+        }
+
+        /* --- Copy Button Styling --- */
+        .copy-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #6c757d; /* Grey button */
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            opacity: 0.7; /* Slightly visible */
+            transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            display: flex; /* Align icon and text */
+            align-items: center;
+        }
+
+        .code-block-wrapper:hover .copy-btn {
+            opacity: 1; /* Fully visible on hover */
+        }
+
+        .copy-btn:hover {
+            background-color: #5a6268; /* Darker grey on hover */
+        }
+
+        .copy-btn svg {
+            width: 1em; /* Size icon relative to font size */
+            height: 1em;
+            margin-right: 0.4em;
+            fill: currentColor; /* Use button text color for icon */
+        }
+
+        .copy-btn.copied {
+            background-color: #28a745; /* Green when copied */
+        }
+         .copy-btn.copied svg {
+            display: none; /* Hide copy icon when showing 'Copied!' */
+        }
+
+
+        /* --- Notes/Emphasis --- */
+        .note {
+            font-style: italic;
+            color: #555;
+            margin-left: 1em;
+            border-left: 3px solid #ced4da;
+            padding-left: 1em;
+            margin-top: 0.5em; /* Add space above note if needed */
+             margin-bottom: 1em;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            pre { padding-top: 2.8em; } /* Adjust space for button on smaller screens */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Screen Recording with FFmpeg for Proctoring</h1>
+
+        <p>FFmpeg is a powerful command-line tool for handling multimedia data. It can be used for efficient, low-resource screen recording, making it suitable for proctoring purposes where minimal system impact and reasonable file sizes are desired. This guide provides instructions for installing and using FFmpeg on Windows, macOS, and Linux using consistent parameters focused on low bitrate output.</p>
+
+        <p>The goal is to create screen recordings using settings like low frame rates and low bitrates, resulting in significantly compressed MP4 or MKV files appropriate for review without consuming excessive disk space or system resources during recording.</p>
+
+        <h2>Prerequisites</h2>
+
+        <p>You need to have FFmpeg installed on your system. See platform-specific instructions below for installation guidance.</p>
+
+        <h2>Windows Instructions</h2>
+
+        <h3>Installation</h3>
+
+        <ol>
+            <li><strong>Download:</strong> Obtain the FFmpeg "essentials" build for Windows. A common source is <a href="https://www.gyan.dev/ffmpeg/builds/" target="_blank" rel="noopener noreferrer">Gyan.dev</a>. Download the <code>ffmpeg-release-essentials.zip</code> file. (As of early 2025, recent versions should work well).</li>
+            <li><strong>Extract:</strong> Unzip the downloaded file to a location of your choice. For simplicity, you might place it in your user directory and rename the extracted folder to simply <code>ffmpeg</code>. Example path: <code>C:\Users\YourUsername\ffmpeg</code>.</li>
+            <li><strong>(Optional but Recommended) Add to Path:</strong> For easier use, you can add the <code>bin</code> subdirectory within your FFmpeg installation folder (e.g., <code>C:\Users\YourUsername\ffmpeg\bin</code>) to your system's PATH environment variable. This allows running <code>ffmpeg</code> from any command prompt location. If you skip this step, you must navigate to the <code>bin</code> directory first before running commands.</li>
+        </ol>
+
+        <h3>Recording</h3>
+
+        <ol>
+            <li><strong>Open Command Prompt:</strong> Open a Windows Command Prompt or PowerShell window.</li>
+            <li><strong>Navigate to FFmpeg (if not in PATH):</strong> If you didn't add FFmpeg to your PATH, navigate to the directory containing <code>ffmpeg.exe</code>. Example:
+                <div class="code-block-wrapper">
+                    <pre><code class="language-bash">cd C:\Users\YourUsername\ffmpeg\bin</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                        <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                        Copy
+                    </button>
+                </div>
+            </li>
+            <li><strong>Start Recording:</strong> Execute the following command in <strong>one single line</strong>. Replace <code>&lt;video_filename&gt;.mp4</code> with your desired output file name (e.g., <code>proctoring_session_YourName.mp4</code>). See the 'Command Parameters Explained' section below for details on each option.
+                 <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffmpeg -f gdigrab -r 2 -probesize 40M -threads 1 -i desktop -vcodec libx264 -b:v 256k -pix_fmt yuv420p &lt;video_filename&gt;.mp4</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                    </button>
+                </div>
+                <p class="note">Note: If FFmpeg is in your PATH, you can run this command from any directory without the <code>./</code> prefix.</p>
+            </li>
+             <li><strong>Stop Recording:</strong> To finish the recording, switch focus back to the Command Prompt window where FFmpeg is running and press the <code>q</code> key.</li>
+        </ol>
+
+        <h3>Playback</h3>
+        <ul>
+             <li>You can typically play the recording by double-clicking the generated <code>.mp4</code> file in File Explorer.</li>
+             <li>Alternatively, use <code>ffplay</code> from the command line (if available in your FFmpeg build/path):
+                 <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffplay &lt;video_filename&gt;.mp4</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                    </button>
+                </div>
+             </li>
+        </ul>
+
+        <h2>macOS Instructions</h2>
+        <h3>Installation</h3>
+        <p>The easiest way to install FFmpeg on macOS is using <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">Homebrew</a>:</p>
+        <div class="code-block-wrapper">
+            <pre><code class="language-bash">brew install ffmpeg</code></pre>
+             <button class="copy-btn" title="Copy command">
+                 <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                 Copy
+            </button>
+        </div>
+
+        <h3>Recording</h3>
+        <ol>
+             <li><strong>Permissions:</strong> The first time you try to record the screen, macOS will likely prompt you to grant permission to your terminal application (e.g., Terminal.app, iTerm2) for "Screen Recording" under <code>System Settings</code> &gt; <code>Privacy &amp; Security</code> &gt; <code>Screen Recording</code>. You must grant this permission.</li>
+            <li><strong>Identify Screen Input Device:</strong> Run this command first to see available video devices:
+                 <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffmpeg -f avfoundation -list_devices true -i ""</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                    </button>
+                </div>
+                 Look through the output under "AVFoundation video devices". Find the line that mentions <code>Capture screen</code> (e.g., <code>[AVFoundation input device @ 0x...] [1] Capture screen 0</code>). Note the index number in the square brackets (e.g., <code>1</code>). This is your <code>&lt;screen_index&gt;</code>.
+            </li>
+             <li><strong>Start Recording:</strong> Open the Terminal application. Run the following command, replacing <code>&lt;screen_index&gt;</code> with the number found above and <code>&lt;video_filename&gt;.mp4</code> with your desired file name. See the 'Command Parameters Explained' section below for details on each option.
+                <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffmpeg -f avfoundation -r 2 -probesize 40M -threads 1 -i "&lt;screen_index&gt;" -vcodec libx264 -b:v 256k -pix_fmt yuv420p &lt;video_filename&gt;.mp4</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                    </button>
+                </div>
+                <p class="note">Note: This command captures video only. Capturing audio requires identifying the audio device index and modifying the <code>-i</code> option (e.g., <code>-i "&lt;screen_index&gt;:&lt;audio_index&gt;"</code>), which is often unnecessary for simple proctoring.</p>
+             </li>
+            <li><strong>Stop Recording:</strong> Bring the Terminal window into focus and press the <code>q</code> key.</li>
+        </ol>
+
+        <h3>Playback</h3>
+        <ul>
+            <li>Double-click the <code>.mp4</code> file in Finder to open it with QuickTime Player or another default media player.</li>
+            <li>Use <code>ffplay</code> in the terminal:
+                 <div class="code-block-wrapper">
+                     <pre><code class="language-bash">ffplay &lt;video_filename&gt;.mp4</code></pre>
+                     <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Linux Instructions</h2>
+        <h3>Installation</h3>
+         <p>Use your distribution's package manager.</p>
+        <ul>
+            <li><strong>Debian/Ubuntu:</strong>
+                 <div class="code-block-wrapper">
+                     <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install ffmpeg</code></pre>
+                     <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                 </div>
+            </li>
+            <li><strong>Fedora:</strong>
+                 <div class="code-block-wrapper">
+                     <pre><code class="language-bash">sudo dnf install ffmpeg</code></pre>
+                     <button class="copy-btn" title="Copy command">
+                          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                 </div>
+             </li>
+            <li><strong>Arch Linux:</strong>
+                 <div class="code-block-wrapper">
+                     <pre><code class="language-bash">sudo pacman -S ffmpeg</code></pre>
+                      <button class="copy-btn" title="Copy command">
+                          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                 </div>
+             </li>
+        </ul>
+
+        <h3>Recording</h3>
+        <ol>
+             <li><strong>Start Recording (Xorg):</strong> Open a terminal. Run the following command, replacing <code>&lt;video_filename&gt;.mp4</code> with your desired file name. This typically works on systems using the Xorg display server. See the 'Command Parameters Explained' section below for details on each option.
+                <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffmpeg -f x11grab -r 2 -probesize 40M -threads 1 -i :0.0 -vcodec libx264 -b:v 256k -pix_fmt yuv420p &lt;video_filename&gt;.mp4</code></pre>
+                     <button class="copy-btn" title="Copy command">
+                          <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                </div>
+                <p class="note">Note: FFmpeg using <code>x11grab</code> generally captures the entire screen connected to display <code>:0.0</code> by default. If the capture area is incorrect, add the <code>-video_size &lt;width&gt;x&lt;height&gt;</code> option (e.g., <code>-video_size 1920x1080</code>) immediately <em>before</em> the <code>-i :0.0</code> flag.</p>
+                <p class="note">Wayland Users: Screen capture on Wayland typically requires different methods than <code>x11grab</code>. Investigate tools compatible with your Wayland compositor (like <code>wf-recorder</code>). The command above will likely not work.</p>
+             </li>
+             <li><strong>Stop Recording:</strong> Bring the terminal window into focus and press the <code>q</code> key.</li>
+        </ol>
+
+        <h3>Playback</h3>
+        <ul>
+             <li>Use your default system media player (like VLC, Totem, etc.) by double-clicking the file.</li>
+             <li>Use <code>ffplay</code> in the terminal:
+                 <div class="code-block-wrapper">
+                    <pre><code class="language-bash">ffplay &lt;video_filename&gt;.mp4</code></pre>
+                    <button class="copy-btn" title="Copy command">
+                         <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                         Copy
+                     </button>
+                </div>
+             </li>
+        </ul>
+
+        <h2>Command Parameters Explained</h2>
+        <p>Here's a breakdown of the parameters used in the commands above:</p>
+        <ul>
+            <li><strong><code>-f &lt;format&gt;</code></strong>: Specifies the input format/device driver.
+                <ul>
+                    <li><code>gdigrab</code>: Used on Windows for capturing the screen.</li>
+                    <li><code>avfoundation</code>: Used on macOS for accessing input devices, including the screen.</li>
+                    <li><code>x11grab</code>: Used on Linux (with Xorg display server) for capturing the screen.</li>
+                </ul>
+            </li>
+            <li><strong><code>-r &lt;rate&gt;</code></strong>: Sets the output <strong>frame rate</strong> (frames per second).
+                <ul>
+                    <li><code>2</code>: Used in the examples. This very low rate significantly reduces file size and CPU load, making it suitable for proctoring where smooth motion is not required, only periodic snapshots of screen activity.</li>
+                </ul>
+            </li>
+            <li><strong><code>-probesize &lt;size&gt;</code></strong>: Sets the initial buffer size FFmpeg uses to analyze the input stream.
+                <ul>
+                    <li><code>40M</code>: Used in the examples (40 Megabytes). This can sometimes help FFmpeg start faster or avoid issues analyzing the desktop input, especially on Windows. Optional.</li>
+                </ul>
+            </li>
+             <li><strong><code>-threads &lt;count&gt;</code></strong>: Limits the number of CPU threads used for encoding.
+                 <ul>
+                     <li><code>1</code>: Used in the examples. Restricting to a single thread minimizes the performance impact on the system during recording, which is important for proctoring. Optional; removing it lets FFmpeg use more threads (potentially faster encoding but higher CPU usage).</li>
+                 </ul>
+             </li>
+            <li><strong><code>-i &lt;input&gt;</code></strong>: Specifies the input source.
+                <ul>
+                    <li><code>desktop</code>: Used with <code>gdigrab</code> on Windows to select the entire desktop.</li>
+                    <li><code>"&lt;screen_index&gt;"</code>: Used with <code>avfoundation</code> on macOS, where <code>&lt;screen_index&gt;</code> is the number identifying the screen capture device (found using <code>-list_devices true</code>).</li>
+                    <li><code>:0.0</code>: Used with <code>x11grab</code> on Linux, typically referring to the primary display and its entire screen area.</li>
+                </ul>
+            </li>
+            <li><strong><code>-video_size &lt;width&gt;x&lt;height&gt;</code> or <code>-s &lt;width&gt;x&lt;height&gt;</code></strong>: (Optional) Explicitly sets the capture resolution. While often automatically detected (especially <code>x11grab</code>), this can be added <em>before</em> the <code>-i</code> flag if needed (e.g., <code>-video_size 1920x1080</code>).</li>
+            <li><strong><code>-vcodec &lt;codec&gt;</code></strong>: Specifies the video codec for encoding the output file.
+                <ul>
+                    <li><code>libx264</code>: Selects the widely used H.264 codec (via the high-quality <code>libx264</code> library), offering good compression.</li>
+                </ul>
+            </li>
+            <li><strong><code>-b:v &lt;bitrate&gt;</code></strong>: Sets the target <strong>video bitrate</strong>.
+                <ul>
+                    <li><code>256k</code>: Used in the examples (256 kilobits per second). This forces a low bitrate, prioritizing small file size over high visual quality, consistent with proctoring requirements. Increase this (e.g., <code>512k</code>, <code>1000k</code>) for better quality if needed, resulting in larger files.</li>
+                </ul>
+            </li>
+            <li><strong><code>-pix_fmt &lt;format&gt;</code></strong>: Sets the output pixel format.
+                <ul>
+                    <li><code>yuv420p</code>: A common format ensuring compatibility with most players and web browsers.</li>
+                </ul>
+            </li>
+            <li><strong><code>&lt;video_filename&gt;.mp4</code></strong>: The name for your output video file.
+                <ul>
+                    <li>You can replace <code>.mp4</code> with <code>.mkv</code> if preferred. MKV (Matroska) containers can sometimes be more robust against corruption if the recording process is interrupted unexpectedly.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>This guide provides consistent, low-resource command examples for screen recording suitable for proctoring scenarios using FFmpeg across major desktop operating systems.</p>
+
+
+    </div> <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyButtons = document.querySelectorAll('.copy-btn');
+
+            // SVG icon markup for the button
+            const copyIconSVG = `<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>`;
+            const originalButtonText = "Copy";
+
+            copyButtons.forEach(button => {
+                // Set initial content with icon
+                button.innerHTML = `${copyIconSVG} ${originalButtonText}`;
+
+                button.addEventListener('click', () => {
+                    const wrapper = button.closest('.code-block-wrapper');
+                    if (!wrapper) return;
+
+                    const codeElement = wrapper.querySelector('pre code');
+                    if (!codeElement) return;
+
+                    const codeToCopy = codeElement.textContent || codeElement.innerText;
+
+                    navigator.clipboard.writeText(codeToCopy).then(() => {
+                        // Success feedback
+                        button.textContent = 'Copied!';
+                        button.classList.add('copied');
+
+                        // Revert back after 2 seconds
+                        setTimeout(() => {
+                            button.innerHTML = `${copyIconSVG} ${originalButtonText}`; // Restore icon and text
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        button.textContent = 'Error'; // Indicate failure briefly
+                         setTimeout(() => {
+                            button.innerHTML = `${copyIconSVG} ${originalButtonText}`;
+                        }, 2000);
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
