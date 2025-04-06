@@ -154,19 +154,19 @@
 
     <div class="container">
 
-        <h1>Screen Recording with FFmpeg for Proctoring</h1>
+        <h1>📹 Screen Recording with FFmpeg for Proctoring</h1>
 
         <p>FFmpeg is a powerful command-line tool for handling multimedia data. It can be used for efficient, low-resource screen recording, making it suitable for proctoring purposes where minimal system impact and reasonable file sizes are desired. This guide provides instructions for installing and using FFmpeg on Windows, macOS, and Linux using consistent parameters focused on low bitrate output.</p>
 
         <p>The goal is to create screen recordings using settings like low frame rates and low bitrates, resulting in significantly compressed MP4 or MKV files appropriate for review without consuming excessive disk space or system resources during recording.</p>
 
-        <h2>Prerequisites</h2>
+        <h2>✅ Prerequisites</h2>
 
         <p>You need to have FFmpeg installed on your system. See platform-specific instructions below for installation guidance.</p>
 
-        <h2>Windows Instructions</h2>
+        <h2>💻 Windows Instructions</h2>
 
-        <h3>Installation</h3>
+        <h3>📥 Installation</h3>
 
         <ol>
             <li><strong>Download:</strong> Obtain the FFmpeg "essentials" build for Windows. A common source is <a href="https://www.gyan.dev/ffmpeg/builds/" target="_blank" rel="noopener noreferrer">Gyan.dev</a>. Download the <code>ffmpeg-release-essentials.zip</code> file. (As of early 2025, recent versions should work well).</li>
@@ -174,7 +174,7 @@
             <li><strong>(Optional but Recommended) Add to Path:</strong> For easier use, you can add the <code>bin</code> subdirectory within your FFmpeg installation folder (e.g., <code>C:\Users\YourUsername\ffmpeg\bin</code>) to your system's PATH environment variable. This allows running <code>ffmpeg</code> from any command prompt location. If you skip this step, you must navigate to the <code>bin</code> directory first before running commands.</li>
         </ol>
 
-        <h3>Recording</h3>
+        <h3>🔴 Recording</h3>
 
         <ol>
             <li><strong>Open Command Prompt:</strong> Open a Windows Command Prompt or PowerShell window.</li>
@@ -195,12 +195,12 @@
                          Copy
                     </button>
                 </div>
-                <p class="note">Note: If FFmpeg is in your PATH, you can run this command from any directory without the <code>./</code> prefix.</p>
+                <p class="note">💡 Note: If FFmpeg is in your PATH, you can run this command from any directory without the <code>./</code> prefix.</p>
             </li>
-             <li><strong>Stop Recording:</strong> To finish the recording, switch focus back to the Command Prompt window where FFmpeg is running and press the <code>q</code> key.</li>
+             <li><strong>Stop Recording:</strong> To finish the recording, switch focus back to the Command Prompt window where FFmpeg is running and press the ⏹️ <code>q</code> key.</li>
         </ol>
 
-        <h3>Playback</h3>
+        <h3>▶️ Playback</h3>
         <ul>
              <li>You can typically play the recording by double-clicking the generated <code>.mp4</code> file in File Explorer.</li>
              <li>Alternatively, use <code>ffplay</code> from the command line (if available in your FFmpeg build/path):
@@ -214,8 +214,8 @@
              </li>
         </ul>
 
-        <h2>macOS Instructions</h2>
-        <h3>Installation</h3>
+        <h2>💻 macOS Instructions</h2>
+        <h3>📥 Installation</h3>
         <p>The easiest way to install FFmpeg on macOS is using <a href="https://brew.sh/" target="_blank" rel="noopener noreferrer">Homebrew</a>:</p>
         <div class="code-block-wrapper">
             <pre><code class="language-bash">brew install ffmpeg</code></pre>
@@ -225,7 +225,7 @@
             </button>
         </div>
 
-        <h3>Recording</h3>
+        <h3>🔴 Recording</h3>
         <ol>
              <li><strong>Permissions:</strong> The first time you try to record the screen, macOS will likely prompt you to grant permission to your terminal application (e.g., Terminal.app, iTerm2) for "Screen Recording" under <code>System Settings</code> &gt; <code>Privacy &amp; Security</code> &gt; <code>Screen Recording</code>. You must grant this permission.</li>
             <li><strong>Identify Screen Input Device:</strong> Run this command first to see available video devices:
@@ -246,12 +246,12 @@
                          Copy
                     </button>
                 </div>
-                <p class="note">Note: This command captures video only. Capturing audio requires identifying the audio device index and modifying the <code>-i</code> option (e.g., <code>-i "&lt;screen_index&gt;:&lt;audio_index&gt;"</code>), which is often unnecessary for simple proctoring.</p>
+                <p class="note">💡 Note: This command captures video only. Capturing audio requires identifying the audio device index and modifying the <code>-i</code> option (e.g., <code>-i "&lt;screen_index&gt;:&lt;audio_index&gt;"</code>), which is often unnecessary for simple proctoring.</p>
              </li>
-            <li><strong>Stop Recording:</strong> Bring the Terminal window into focus and press the <code>q</code> key.</li>
+            <li><strong>Stop Recording:</strong> Bring the Terminal window into focus and press the ⏹️ <code>q</code> key.</li>
         </ol>
 
-        <h3>Playback</h3>
+        <h3>▶️ Playback</h3>
         <ul>
             <li>Double-click the <code>.mp4</code> file in Finder to open it with QuickTime Player or another default media player.</li>
             <li>Use <code>ffplay</code> in the terminal:
@@ -265,8 +265,8 @@
             </li>
         </ul>
 
-        <h2>Linux Instructions</h2>
-        <h3>Installation</h3>
+        <h2>🐧 Linux Instructions</h2>
+        <h3>📥 Installation</h3>
          <p>Use your distribution's package manager.</p>
         <ul>
             <li><strong>Debian/Ubuntu:</strong>
@@ -298,7 +298,7 @@
              </li>
         </ul>
 
-        <h3>Recording</h3>
+        <h3>🔴 Recording</h3>
         <ol>
              <li><strong>Start Recording (Xorg):</strong> Open a terminal. Run the following command, replacing <code>&lt;video_filename&gt;.mp4</code> with your desired file name. This typically works on systems using the Xorg display server. See the 'Command Parameters Explained' section below for details on each option.
                 <div class="code-block-wrapper">
@@ -308,13 +308,13 @@
                          Copy
                      </button>
                 </div>
-                <p class="note">Note: FFmpeg using <code>x11grab</code> generally captures the entire screen connected to display <code>:0.0</code> by default. If the capture area is incorrect, add the <code>-video_size &lt;width&gt;x&lt;height&gt;</code> option (e.g., <code>-video_size 1920x1080</code>) immediately <em>before</em> the <code>-i :0.0</code> flag.</p>
-                <p class="note">Wayland Users: Screen capture on Wayland typically requires different methods than <code>x11grab</code>. Investigate tools compatible with your Wayland compositor (like <code>wf-recorder</code>). The command above will likely not work.</p>
+                <p class="note">💡 Note: FFmpeg using <code>x11grab</code> generally captures the entire screen connected to display <code>:0.0</code> by default. If the capture area is incorrect, add the <code>-video_size &lt;width&gt;x&lt;height&gt;</code> option (e.g., <code>-video_size 1920x1080</code>) immediately <em>before</em> the <code>-i :0.0</code> flag.</p>
+                <p class="note">💡 Wayland Users: Screen capture on Wayland typically requires different methods than <code>x11grab</code>. Investigate tools compatible with your Wayland compositor (like <code>wf-recorder</code>). The command above will likely not work.</p>
              </li>
-             <li><strong>Stop Recording:</strong> Bring the terminal window into focus and press the <code>q</code> key.</li>
+             <li><strong>Stop Recording:</strong> Bring the terminal window into focus and press the ⏹️ <code>q</code> key.</li>
         </ol>
 
-        <h3>Playback</h3>
+        <h3>▶️ Playback</h3>
         <ul>
              <li>Use your default system media player (like VLC, Totem, etc.) by double-clicking the file.</li>
              <li>Use <code>ffplay</code> in the terminal:
@@ -328,7 +328,7 @@
              </li>
         </ul>
 
-        <h2>Command Parameters Explained</h2>
+        <h2>🔍 Command Parameters Explained</h2>
         <p>Here's a breakdown of the parameters used in the commands above:</p>
         <ul>
             <li><strong><code>-f &lt;format&gt;</code></strong>: Specifies the input format/device driver.
@@ -385,8 +385,8 @@
 
         <p>This guide provides consistent, low-resource command examples for screen recording suitable for proctoring scenarios using FFmpeg across major desktop operating systems.</p>
 
-
     </div> <script>
+        // Script remains the same
         document.addEventListener('DOMContentLoaded', () => {
             const copyButtons = document.querySelectorAll('.copy-btn');
 

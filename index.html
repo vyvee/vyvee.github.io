@@ -9,81 +9,101 @@
     <meta name="image" content="https://vyvee.github.io/logo-maths-cache.png" />
     <meta property="og:image" content="https://vyvee.github.io/logo-maths-cache.png" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* --- Global Styles (adapted from FFmpeg page) --- */
         body {
-            font-family: 'Roboto', sans-serif;
-            padding: 20px;
-            background-color: #F4F2FF;
-            color: #333;
-            text-align: center;
+            /* Using system font stack for consistency */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            /* Warm background matching FFmpeg page */
+            background-color: #fdf5e6;
+            color: #212529; /* Dark grey text */
             margin: 0;
+            padding: 0;
+            /* Text alignment handled by container/elements */
         }
 
-        h1 {
-            font-family: 'Ubuntu', sans-serif;
-            color: #502B85;
-        }
-
+        /* --- Content Container (adapted from FFmpeg page) --- */
         .container {
             max-width: 800px;
-            margin: auto;
-            padding: 20px;
+            margin: 2rem auto;
+            padding: 2rem 3rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Typography (adapted from FFmpeg page) --- */
+        h1 {
+            color: #343a40;
+            font-size: 2.2rem; /* Matches H1 on FFmpeg page */
+            margin-top: 1.5em; /* Adjusted top margin for page title */
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+            border-bottom: 2px solid #dee2e6; /* Matches H1 on FFmpeg page */
+            padding-bottom: 0.3em;
+            text-align: center; /* Center main heading */
         }
 
         p {
-            font-size: 18px;
-            color: #555;
+            margin-bottom: 1.2em;
+             /* font-size and color inherit from body, line-height too */
         }
 
-        .app-link {
-            color: #FFF;
-            background-color: #6A67CE;
-            padding: 10px 20px;
-            border-radius: 5px;
+        /* --- Links (Standard style like FFmpeg page) --- */
+        a {
+            color: #007bff; /* Standard blue link color */
             text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            transition: background-color 0.3s;
         }
 
-        .app-link:hover {
-            background-color: #7B78D7;
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
         }
 
-        .app-section {
-            background-color: #ECE5F9;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
+        /* Center paragraph content where links are listed */
+        .link-list p {
+            text-align: center;
+            margin-bottom: 1.5em; /* Add slightly more space between links */
         }
 
+
+        /* --- Footer Styling (adapted) --- */
         .footer {
-            font-size: 14px;
-            color: #888;
-            margin-top: 40px;
+            font-size: 0.9em; /* Slightly smaller text */
+            color: #6c757d; /* Muted grey color */
+            margin-top: 3rem; /* More space above footer */
+            text-align: center;
+            padding-bottom: 1rem; /* Add some padding at the very bottom */
         }
+
+        /* Removed .app-link and .app-section styles */
+
+         /* --- Responsive Adjustments (copied from FFmpeg page) --- */
+        @media (max-width: 768px) {
+            .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
+            h1 { font-size: 1.8rem; }
+        }
+
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>Welcome to My Homepage!</h1>
-        <p>Discover various informative contents and insights here. Explore the sections below:</p>
+        <p style="text-align: center;">Here's some of my random writing and guides. Hope you find something interesting or useful below:</p>
 
-        <!-- Link to the Maths Cache page -->
-        <div class="app-section">
-            <h2>Featured App: 数学秘籍 Maths Cache</h2>
-            <p>Efficient maths notes and tools for reference and revision, ideal for students. Available as a web app and on Google Play Store.</p>
-            <a href="maths-cache.html" class="app-link">Learn More About Maths Cache</a>
-        </div>
+        <div class="link-list">
+            <p><a href="maths-cache.html">数学秘籍 Maths Cache - Efficient maths notes and tools</a></p>
 
-        <!-- Other content links -->
-        <a href="kuala_lumpur_sunrise_sunset.html" class="app-link">Kuala Lumpur's Sunrise and Sunset Times</a>
-        <!-- Additional links can be added here -->
-    </div>
-    <div class="footer">
-        © 2024 Vee Voon Yee. All rights reserved.
+             <p><a href="screen-recording-ffmpeg.html">Guide: Screen Recording with FFmpeg for Proctoring</a></p>
+
+            <p><a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times</a></p>
+
+            </div>
+
+    </div> <div class="footer">
+        © 2025 Vee Voon Yee. All rights reserved.
     </div>
 </body>
 

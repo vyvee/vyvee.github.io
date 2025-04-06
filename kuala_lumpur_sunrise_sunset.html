@@ -6,52 +6,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuala Lumpur's Sunrise and Sunset Charts | 吉隆坡的日出日落图表</title>
     <style>
+        /* --- Global Styles (adapted from consistent theme) --- */
         body {
-            font-family: "Arial", sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #FFF1E5;
-            color: #4B2C20;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            background-color: #fdf5e6; /* Warm background */
+            color: #212529; /* Dark grey text */
+            margin: 0;
+            padding: 0;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
+        /* --- Content Container (from consistent theme) --- */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem 3rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Typography (adapted) --- */
+        /* Style for H2, similar to other pages but centered */
+        h2 {
+            color: #343a40;
+            font-size: 1.8rem; /* Matches H2 on FFmpeg page */
+            margin-top: 1em; /* Adjusted top margin */
+            margin-bottom: 1em;
+            line-height: 1.3;
+            border-bottom: 1px solid #dee2e6; /* Subtle line */
+            padding-bottom: 0.3em;
+            text-align: center; /* Center the heading */
+        }
+        /* Style for the Chinese subheading */
+        h2 span {
+             font-size: 1.1rem; /* Adjusted size relative to h2 */
+             display: block; /* Make it appear on a new line */
+             margin-top: 0.3em;
+             font-weight: normal; /* Make sub-heading less bold */
+             color: #495057; /* Slightly lighter color for subheading */
         }
 
         p {
-            font-size: 16px;
+            margin-bottom: 1.2em;
+             /* font-size and color inherit from body */
+        }
+        /* Center intro paragraphs */
+        .intro-text {
+            text-align: center;
         }
 
+
+        /* --- Links (Standard style like FFmpeg page) --- */
         a {
-            color: #FF6B35;
+            color: #007bff; /* Standard blue link color */
+            text-decoration: none;
         }
 
         a:hover {
+            color: #0056b3;
             text-decoration: underline;
         }
 
-        h2 {
-            font-size: 24px;
+        /* Style for the Back link */
+        .back-link {
+            display: block; /* Make it a block element */
+            margin-bottom: 1.5rem; /* Space below the link */
+            font-size: 0.9em;
         }
+
+
+        /* --- Image Styling --- */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Allows margin auto centering */
+            margin: 1.5em auto; /* Center images and add vertical space */
+            border-radius: 4px; /* Optional: slightly rounded corners for images */
+        }
+
+
+         /* --- Responsive Adjustments (copied from FFmpeg page) --- */
+        @media (max-width: 768px) {
+            .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
+            h2 { font-size: 1.5rem; }
+             h2 span { font-size: 1rem; }
+        }
+
     </style>
 </head>
 
 <body>
-    <a href="index.html" style="color: #502B85; padding: 10px; text-decoration: none;">
-        ← Back to Home
-    </a>
 
-    <h2>🌄 Kuala Lumpur's Sunrise and Sunset Times 🌅 <br><span style="font-size: 18px;">吉隆坡的日出日落时间</span></h2>
+    <div class="container">
 
-    <p>Welcome! Here are the calculated sunrise and sunset times for Kuala Lumpur (3.13°N, 101.68°E). The data variation is minimal
-        year-to-year, making these charts generally applicable every year.</p>
-    <p>以下是我根据吉隆坡制作的日出日落图表。每年的数据波动很小，因此这图表基本上每年都适用。</p>
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
 
-    <img src="kuala_lumpur_sunrise.png" alt="Kuala Lumpur Sunrise Times">
-    <img src="kuala_lumpur_sunset.png" alt="Kuala Lumpur Sunset Times">
+        <h2>🌄 Kuala Lumpur's Sunrise and Sunset Times 🌅 <br>
+            <span lang="zh">吉隆坡的日出日落时间</span>
+        </h2>
 
-</body>
+        <div class="intro-text">
+            <p>Welcome! Here are the calculated sunrise and sunset times for Kuala Lumpur (3.13°N, 101.68°E). The data variation is minimal year-to-year, making these charts generally applicable every year.</p>
+            <p lang="zh">以下是我根据吉隆坡制作的日出日落图表。每年的数据波动很小，因此这图表基本上每年都适用。</p>
+        </div>
+
+        <img src="kuala_lumpur_sunrise.png" alt="Kuala Lumpur Sunrise Times Chart">
+        <img src="kuala_lumpur_sunset.png" alt="Kuala Lumpur Sunset Times Chart">
+
+    </div> </body>
 
 </html>
