@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学备忘单</title>
+
+    <style>
+        /* --- Global Styles (consistent theme) --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            background-color: #fdf5e6; /* Warm background */
+            color: #212529;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Content Container (consistent theme) --- */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem 3rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Typography (consistent theme) --- */
+        h1 {
+            color: #343a40;
+            font-size: 2.2rem;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            line-height: 1.4;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 0.3em;
+            text-align: center;
+        }
+
+        h2 { /* Section titles */
+            color: #343a40;
+            font-size: 1.8rem;
+            margin-top: 2em;
+            margin-bottom: 1em; /* Reduced margin below H2 */
+            padding-bottom: 0.2em;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        /* Style for the quote/banner under H2 */
+        .emphasis-note {
+            background-color: #fffaf0; /* FloralWhite - very light yellow */
+            border-left: 3px solid #ffe082; /* Lighter yellow border */
+            padding: 0.6em 1em; /* Reduced padding */
+            margin: 1em 0 2em 0; /* Adjusted margin (more bottom margin before first item) */
+            color: #555;
+            border-radius: 4px;
+            font-style: normal;
+            text-align: justify; /* Match paragraph alignment */
+            font-size: 1.05em; /* Slightly larger than normal p */
+            line-height: 1.8;
+        }
+        /* The paragraph for the '雅兴/胆量' note - now just uses bold */
+        .warning-note strong {
+            /* You could add color here if desired, e.g., color: #c85000; */
+             display: block; /* Make it block for margin control */
+             margin: 1.5em 0; /* Ensure spacing */
+        }
+
+        /* Style for licensing information */
+        .license-info {
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-size: 0.95em;
+            color: #555;
+            text-align: left;
+        }
+        .license-info img {
+             height: 1.2em;
+             vertical-align: middle;
+             margin-right: 0.3em;
+        }
+
+        /* Style for file download links */
+        .file-link p {
+            margin-top: 1.0em;
+            margin-bottom: 2.0em;
+            font-weight: bold;
+        }
+        .file-link .emoji {
+            margin-right: 0.5em;
+            font-size: 1.1em;
+            vertical-align: middle;
+        }
+
+
+        /* --- Links (Standard style) --- */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Style for the Back link */
+        .back-link {
+            display: block;
+            margin-bottom: 1.5rem;
+            font-size: 0.9em;
+        }
+
+
+        /* --- Footer Styling (consistent theme) --- */
+        .footer {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 3rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+         /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            p, .license-info, .emphasis-note { text-align: left; } /* Left align notes too */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="back-link">
+            ← 返回主页
+        </a>
+
+        <h1>📝 数学备忘单</h1>
+
+        <p>这里分享一些我个人整理的数学备忘单/小抄，希望能对你有所帮助。目前内容以中文为主。</p>
+
+        <h2><span class="emoji">📚</span> 积分策略 / 积分大法</h2>
+
+        <p>《积分策略》这份备忘单总结了高中水平常用的积分策略与技巧（共2页），适合快速复习基本方法。</p>
+        <div class="file-link">
+            <p><span class="emoji">⬇️</span><a href="cheatsheets/积分策略.pdf" target="_blank" rel="noopener noreferrer">《积分策略》(积分策略.pdf)</a></p>
+        </div>
+
+        <p>《积分大法》可视为《积分策略》的“趣味江湖版”。其内容较为丰富（共3页），尤其在“心法要诀”部分，这得益于作为载体的文言文具有极高的信息密度，故而能在寥寥数页内（相比现代白话文）容纳更多进阶技巧与细节，十分适合备忘。</p>
+
+        <p class="warning-note"> <strong>当然，阅读此“大法”亦需相应的“雅兴”或“胆量”，请酌情取阅！</strong>
+        </p>
+
+        <div class="file-link">
+            <p><span class="emoji">⬇️</span><a href="cheatsheets/积分大法.pdf" target="_blank" rel="noopener noreferrer">《积分大法》(积分大法.pdf)</a></p>
+        </div>
+
+        <p class="emphasis-note">
+            积分为术，变化为宗。授尔诸法，以窥门径。<br>
+            然！法有形而意无形，招有尽而变无穷。得意忘形，是为大成！
+        </p>
+
+        <div class="license-info">
+            <p>📄 <strong>授权协议:</strong><br>
+            本页分享的所有备忘单均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-Hans" target="_blank" rel="noopener noreferrer">知识共享 署名 4.0 国际 许可协议 (CC BY 4.0)</a> 进行许可。您可以自由分享和修改，只需遵守署名要求。</p>
+        </div>
+
+        <hr style="margin: 2em 0; border: 0; border-top: 1px solid #eee;">
+
+        <p style="text-align: center; font-style: italic; color: #6c757d;">
+            更多备忘单敬请期待！
+        </p>
+
+    </div> <div class="footer">
+        © 2025 Vee Voon Yee. 版权所有.
+    </div>
+
+</body>
+
+</html>

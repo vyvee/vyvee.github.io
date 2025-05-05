@@ -4,26 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Homepage</title>
+    <title>Welcome to My Homepage | 欢迎来到我的主页</title>
 
     <meta name="image" content="https://vyvee.github.io/logo-maths-cache.png" />
     <meta property="og:image" content="https://vyvee.github.io/logo-maths-cache.png" />
 
     <style>
-        /* --- Global Styles (adapted from FFmpeg page) --- */
+        /* --- Global Styles (consistent theme) --- */
         body {
-            /* Using system font stack for consistency */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            line-height: 1.7;
-            /* Warm background matching FFmpeg page */
+            line-height: 1.7; /* Default line height */
             background-color: #fdf5e6;
-            color: #212529; /* Dark grey text */
+            color: #212529;
             margin: 0;
             padding: 0;
-            /* Text alignment handled by container/elements */
         }
 
-        /* --- Content Container (adapted from FFmpeg page) --- */
+        /* --- Content Container (consistent theme) --- */
         .container {
             max-width: 800px;
             margin: 2rem auto;
@@ -33,26 +30,43 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        /* --- Typography (adapted from FFmpeg page) --- */
+        /* --- Typography (consistent theme) --- */
         h1 {
             color: #343a40;
-            font-size: 2.2rem; /* Matches H1 on FFmpeg page */
-            margin-top: 1.5em; /* Adjusted top margin for page title */
+            font-size: 2.2rem;
+            margin-top: 1.5em;
             margin-bottom: 0.8em;
-            line-height: 1.3;
-            border-bottom: 2px solid #dee2e6; /* Matches H1 on FFmpeg page */
+            line-height: 1.4; /* Keep reduced line-height for H1 with <br> */
+            border-bottom: 2px solid #dee2e6;
             padding-bottom: 0.3em;
-            text-align: center; /* Center main heading */
+            text-align: center;
+        }
+
+        /* Category Headings */
+        h3 {
+            color: #495057;
+            font-size: 1.4rem;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            padding-bottom: 0.2em;
+            border-bottom: 1px solid #e9ecef;
+            /* line-height inherits default */
         }
 
         p {
             margin-bottom: 1.2em;
-             /* font-size and color inherit from body, line-height too */
+        }
+        /* Specific style for intro paragraph */
+        .intro-paragraph {
+             text-align: center;
+             margin-bottom: 2em;
+             line-height: 1.5; /* Keep reduced line-height for intro P with <br> */
         }
 
-        /* --- Links (Standard style like FFmpeg page) --- */
+
+        /* --- Links (Standard style) --- */
         a {
-            color: #007bff; /* Standard blue link color */
+            color: #007bff;
             text-decoration: none;
         }
 
@@ -61,38 +75,50 @@
             text-decoration: underline;
         }
 
-        /* Center paragraph content where links are listed */
-        .link-list p {
-            text-align: center;
-            margin-bottom: 1.5em; /* Add slightly more space between links */
-            font-size: 1.1em; /* Slightly larger font for links */
+        /* Link items styling */
+        ul.link-list {
+             list-style-type: none;
+             padding-left: 0;
+        }
+
+        .link-item {
+            margin-bottom: 1.5em;
+            font-size: 1.1em;
+            /* line-height inherits default */
         }
 
         /* Style for emojis next to links */
-        .link-list p .emoji {
+        .link-item .emoji {
             display: inline-block;
-            margin-right: 0.6em; /* Space between emoji and link */
-            font-size: 1.2em; /* Make emoji slightly larger */
-            vertical-align: middle; /* Align emoji nicely with text */
-        }
-
-
-        /* --- Footer Styling (adapted) --- */
-        .footer {
-            font-size: 0.9em; /* Slightly smaller text */
-            color: #6c757d; /* Muted grey color */
-            margin-top: 3rem; /* More space above footer */
+            margin-right: 0.6em;
+            font-size: 1.2em;
+            vertical-align: middle;
+            width: 1.5em;
             text-align: center;
-            padding-bottom: 1rem; /* Add some padding at the very bottom */
         }
 
-        /* Removed .app-link and .app-section styles */
+        /* Span for Chinese text */
+        span[lang="zh"] {
+            /* No specific styling needed now unless desired */
+        }
+        /* Removed the br + span rule */
 
-         /* --- Responsive Adjustments (copied from FFmpeg page) --- */
+        /* --- Footer Styling (consistent theme) --- */
+        .footer {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 3rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            line-height: 1.5; /* Keep reduced line-height for footer with <br> */
+        }
+
+         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
             .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
             h1 { font-size: 1.8rem; }
-            .link-list p { font-size: 1em; } /* Adjust link font size on smaller screens */
+            h3 { font-size: 1.3rem; }
+            .link-item { font-size: 1em; }
         }
 
     </style>
@@ -100,21 +126,36 @@
 
 <body>
     <div class="container">
-        <h1>👋 Welcome to My Homepage!</h1>
+        <h1>👋 Welcome to My Homepage!<br><span lang="zh">欢迎来到我的主页!</span></h1>
 
-        <p style="text-align: center;">✍️ Here's some of my random writing and guides. Hope you find something interesting or useful below:</p>
+        <p class="intro-paragraph">
+            ✍️ Here's some of my random writing and guides, grouped below.<br><span lang="zh">这里有一些我随笔写的文章与指南，分类如下。</span><br>Hope you find something interesting or useful:
+        </p>
 
-        <div class="link-list">
-            <p><span class="emoji">🧮</span><a href="maths-cache.html">数学秘籍 Maths Cache - Efficient maths notes and tools</a></p>
+        <h3>📚 Guides & Notes / <span lang="zh">指南与笔记</span></h3>
+        <ul class="link-list">
+            <li class="link-item">
+                <span class="emoji">📝</span><a href="maths-cheatsheets.html">Mathematics Cheatsheets / <span lang="zh">数学备忘单</span></a>
+            </li>
+            <li class="link-item">
+                <span class="emoji">🧮</span><a href="maths-cache.html">数学秘籍 Maths Cache - Efficient maths notes and tools</a>
+                 </li>
+             <li class="link-item">
+                 <span class="emoji">📹</span><a href="screen-recording-ffmpeg.html">Guide: Screen Recording with FFmpeg for Proctoring</a>
+             </li>
+             </ul>
 
-            <p><span class="emoji">📹</span><a href="screen-recording-ffmpeg.html">Guide: Screen Recording with FFmpeg for Proctoring</a></p>
 
-            <p><span class="emoji">🌅</span><a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times</a></p>
+        <h3>📊 Other Info / <span lang="zh">其他信息</span></h3>
+        <ul class="link-list">
+            <li class="link-item">
+                 <span class="emoji">🌅</span><a href="kuala_lumpur_sunrise_sunset.html">Kuala Lumpur's Sunrise and Sunset Times / <span lang="zh">吉隆坡的日出日落时间</span></a>
+            </li>
+            </ul>
 
-            </div>
 
     </div> <div class="footer">
-        © 2025 Vee Voon Yee. All rights reserved.
+        © 2025 Vee Voon Yee. All rights reserved.<br><span lang="zh">版权所有</span>.
     </div>
 </body>
 
