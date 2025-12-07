@@ -37,7 +37,7 @@ p {
 }
 /* Specific style for intro paragraph */
 .intro-paragraph {
-     text-align: center;
+     text-align: left; /* Changed from center to left */
      margin-bottom: 2em;
      line-height: 1.5; /* Keep reduced line-height for intro P with <br> */
 }
@@ -179,7 +179,7 @@ span[lang="zh"] {
 }
 
 .kuala-lumpur-sunrise-sunset-page .intro-text {
-    text-align: center;
+    text-align: left; /* Changed from center to left */
 }
 
 .kuala-lumpur-sunrise-sunset-page .back-link {
