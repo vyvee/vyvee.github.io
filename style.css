@@ -1,0 +1,445 @@
+/* --- Global Styles (consistent theme) --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.7; /* Default line height */
+    background-color: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Content Container (consistent theme) --- */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 3rem;
+    background-color: #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Typography (consistent theme) --- */
+/* h1 is defined per page */
+
+/* Category Headings */
+h3 {
+    color: #cbd5e1;
+    font-size: 1.4rem;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid #334155;
+    /* line-height inherits default */
+}
+
+p {
+    margin-bottom: 1.2em;
+}
+/* Specific style for intro paragraph */
+.intro-paragraph {
+     text-align: center;
+     margin-bottom: 2em;
+     line-height: 1.5; /* Keep reduced line-height for intro P with <br> */
+}
+
+
+/* --- Links (Standard style) --- */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7dd3fc;
+    text-decoration: underline;
+}
+
+/* Link items styling */
+ul.link-list {
+     list-style-type: none;
+     padding-left: 0;
+}
+
+.link-item {
+    margin-bottom: 1.5em;
+    font-size: 1.1em;
+    /* line-height inherits default */
+}
+
+/* Style for emojis next to links */
+.link-item .emoji {
+    display: inline-block;
+    margin-right: 0.6em;
+    font-size: 1.2em;
+    vertical-align: middle;
+    width: 1.5em;
+    text-align: center;
+}
+
+/* Span for Chinese text */
+span[lang="zh"] {
+    /* No specific styling needed now unless desired */
+}
+/* Removed the br + span rule */
+
+/* --- Footer Styling (consistent theme) --- */
+.footer {
+    font-size: 0.9em;
+    color: #94a3b8;
+    margin-top: 3rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    line-height: 1.5; /* Keep reduced line-height for footer with <br> */
+}
+
+ /* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .container { margin: 1rem auto; padding: 1.5rem 1.5rem; }
+    h1 { font-size: 1.8rem; }
+    h3 { font-size: 1.3rem; }
+    .link-item { font-size: 1em; }
+}
+
+/* --- Maths Cache Page Specific Styles --- */
+.maths-cache-page h1, .maths-cache-page h2 {
+    font-family: 'Ubuntu', sans-serif;
+    color: #e2e8f0;
+}
+
+.maths-cache-page p, .maths-cache-page .app-info {
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+.maths-cache-page .app-link {
+    color: #0f172a;
+    background-color: #38bdf8;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.maths-cache-page .app-link:hover {
+    background-color: #7dd3fc;
+}
+
+.maths-cache-page .google-play-badge {
+    height: auto;
+    margin: 20px 0;
+}
+
+.maths-cache-page .language-section {
+    margin-top: 10px;
+}
+
+.maths-cache-page .logo-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.maths-cache-page .logo {
+    height: 50px;
+}
+
+/* --- Index Page Specific Styles --- */
+.index-page h1 {
+    color: #f1f5f9;
+    font-size: 2.2rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.4; /* Keep reduced line-height for H1 with <br> */
+    border-bottom: 2px solid #334155;
+    padding-bottom: 0.3em;
+    text-align: center;
+}
+
+/* --- Kuala Lumpur Sunrise Sunset Page Specific Styles --- */
+.kuala-lumpur-sunrise-sunset-page h2 {
+    color: #f1f5f9;
+    font-size: 1.8rem; /* Matches H2 on FFmpeg page */
+    margin-top: 1em; /* Adjusted top margin */
+    margin-bottom: 1em;
+    line-height: 1.3;
+    border-bottom: 1px solid #334155; /* Subtle line */
+    padding-bottom: 0.3em;
+    text-align: center; /* Center the heading */
+}
+
+.kuala-lumpur-sunrise-sunset-page h2 span {
+     font-size: 1.1rem; /* Adjusted size relative to h2 */
+     display: block; /* Make it appear on a new line */
+     margin-top: 0.3em;
+     font-weight: normal; /* Make sub-heading less bold */
+     color: #cbd5e1; /* Slightly lighter color for subheading */
+}
+
+.kuala-lumpur-sunrise-sunset-page .intro-text {
+    text-align: center;
+}
+
+.kuala-lumpur-sunrise-sunset-page .back-link {
+    display: block; /* Make it a block element */
+    margin-bottom: 1.5rem; /* Space below the link */
+    font-size: 0.9em;
+}
+
+.kuala-lumpur-sunrise-sunset-page img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Allows margin auto centering */
+    margin: 1.5em auto; /* Center images and add vertical space */
+    border-radius: 4px; /* Optional: slightly rounded corners for images */
+}
+
+/* --- Maths Cheatsheets Page Specific Styles --- */
+.maths-cheatsheets-page h1 {
+    color: #f1f5f9;
+    font-size: 2.2rem;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    line-height: 1.4;
+    border-bottom: 2px solid #334155;
+    padding-bottom: 0.3em;
+    text-align: center;
+}
+
+.maths-cheatsheets-page h2 { /* Section titles */
+    color: #cbd5e1;
+    font-size: 1.8rem;
+    margin-top: 2em;
+    margin-bottom: 1em; /* Reduced margin below H2 */
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid #334155;
+}
+
+.maths-cheatsheets-page p {
+    margin-bottom: 1.2em;
+    text-align: justify;
+}
+
+.maths-cheatsheets-page .emphasis-note {
+    background-color: #334155; /* Slate 700 */
+    border-left: 3px solid #f59e0b; /* Amber */
+    padding: 0.6em 1em; /* Reduced padding */
+    margin: 1em 0 2em 0; /* Adjusted margin (more bottom margin before first item) */
+    color: #e2e8f0;
+    border-radius: 4px;
+    font-style: normal;
+    text-align: justify; /* Match paragraph alignment */
+    font-size: 1.05em; /* Slightly larger than normal p */
+    line-height: 1.8;
+}
+
+.maths-cheatsheets-page .warning-note strong {
+    /* You could add color here if desired, e.g., color: #c85000; */
+     display: block; /* Make it block for margin control */
+     margin: 1.5em 0; /* Ensure spacing */
+}
+
+.maths-cheatsheets-page .license-info {
+    margin-top: 2.5em;
+    margin-bottom: 1.5em;
+    font-size: 0.95em;
+    color: #94a3b8;
+    text-align: left;
+}
+
+.maths-cheatsheets-page .license-info img {
+     height: 1.2em;
+     vertical-align: middle;
+     margin-right: 0.3em;
+}
+
+.maths-cheatsheets-page .file-link p {
+    margin-top: 1.0em;
+    margin-bottom: 2.0em;
+    font-weight: bold;
+}
+
+.maths-cheatsheets-page .file-link .emoji {
+    margin-right: 0.5em;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+.maths-cheatsheets-page .back-link {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 0.9em;
+}
+
+/* --- Screen Recording FFmpeg Page Specific Styles --- */
+.screen-recording-ffmpeg-page h1, .screen-recording-ffmpeg-page h2, .screen-recording-ffmpeg-page h3 {
+    color: #f1f5f9; /* Slate 100 */
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+    border-bottom: 1px solid #334155; /* Subtle line under headings */
+    padding-bottom: 0.3em;
+}
+.screen-recording-ffmpeg-page h1 { font-size: 2.2rem; border-bottom-width: 2px; }
+.screen-recording-ffmpeg-page h2 { font-size: 1.8rem; }
+.screen-recording-ffmpeg-page h3 { font-size: 1.4rem; border-bottom: none; }
+.screen-recording-ffmpeg-page strong { font-weight: 600; }
+
+.screen-recording-ffmpeg-page ol, .screen-recording-ffmpeg-page ul { padding-left: 2em; margin-bottom: 1.2em; }
+.screen-recording-ffmpeg-page li { margin-bottom: 0.5em; }
+.screen-recording-ffmpeg-page li p { margin-bottom: 0.5em; }
+.screen-recording-ffmpeg-page ul ul { margin-top: 0.3em; margin-bottom: 0.8em; }
+
+.screen-recording-ffmpeg-page code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.9em;
+    background-color: #334155;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #e2e8f0;
+}
+
+.screen-recording-ffmpeg-page .code-block-wrapper {
+    position: relative;
+    margin-bottom: 1.5em; /* Space after code blocks */
+}
+
+.screen-recording-ffmpeg-page pre {
+    background-color: #020617; /* Slate 950 */
+    border: 1px solid #334155;
+    border-radius: 5px;
+    padding: 1em;
+    padding-top: 2.5em; /* Make space for button */
+    overflow-x: auto;
+    line-height: 1.45;
+    margin: 0; /* Remove margin from pre since wrapper handles it */
+}
+
+.screen-recording-ffmpeg-page pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.88em;
+    color: inherit;
+}
+
+.screen-recording-ffmpeg-page .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #475569; /* Slate 600 */
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    opacity: 0.7; /* Slightly visible */
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex; /* Align icon and text */
+    align-items: center;
+}
+
+.screen-recording-ffmpeg-page .code-block-wrapper:hover .copy-btn {
+    opacity: 1; /* Fully visible on hover */
+}
+
+.screen-recording-ffmpeg-page .copy-btn:hover {
+    background-color: #64748b; /* Slate 500 on hover */
+}
+
+.screen-recording-ffmpeg-page .copy-btn svg {
+    width: 1em; /* Size icon relative to font size */
+    height: 1em;
+    margin-right: 0.4em;
+    fill: currentColor; /* Use button text color for icon */
+}
+
+.screen-recording-ffmpeg-page .copy-btn.copied {
+    background-color: #22c55e; /* Green when copied */
+}
+.screen-recording-ffmpeg-page .copy-btn.copied svg {
+    display: none; /* Hide copy icon when showing 'Copied!' */
+}
+
+.screen-recording-ffmpeg-page .note {
+    font-style: italic;
+    color: #94a3b8;
+    margin-left: 1em;
+    border-left: 3px solid #475569;
+    padding-left: 1em;
+    margin-top: 0.5em; /* Add space above note if needed */
+     margin-bottom: 1em;
+}
+
+/* --- Maths Cache Privacy Simple Page Specific Styles --- */
+.mathscache-privacy-simple-page body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+.mathscache-privacy-simple-page .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px 20px 20px;
+    background: #1e293b;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mathscache-privacy-simple-page h1, .mathscache-privacy-simple-page h2, .mathscache-privacy-simple-page h3, .mathscache-privacy-simple-page h4 {
+    color: #f1f5f9;
+}
+
+.mathscache-privacy-simple-page a {
+    color: #38bdf8;
+}
+
+.mathscache-privacy-simple-page .language-separator {
+    margin: 30px 0;
+    border-bottom: 1px solid #334155;
+}
+
+/* --- Maths Cache Privacy Page Specific Styles --- */
+.mathscache-privacy-page body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+.mathscache-privacy-page .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px 20px 20px;
+    background: #1e293b;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mathscache-privacy-page h1, .mathscache-privacy-page h2 {
+    color: #f1f5f9;
+}
+
+.mathscache-privacy-page p {
+    margin: 15px 0;
+}
+
+.mathscache-privacy-page a {
+    color: #38bdf8;
+}
+
+.mathscache-privacy-page .language-separator {
+    margin: 30px 0;
+    border-bottom: 1px solid #334155;
+}
